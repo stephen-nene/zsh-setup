@@ -1,0 +1,20 @@
+ARG BASE_IMAGE=debian:bullseye
+FROM ${BASE_IMAGE}
+
+RUN apt-get update && apt-get install -y \
+    sudo \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create a non-root user to test the script
+RUN useradd -m -s /bin/bash testuser && \
+    echo "testuser ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+USER testuser
+WORKDIR /home/testuser
+
+# Copy the installation script
+COPY install-zsh.sh /tmp/install-zsh.sh
+RUN chmod +x /tmp/install-zsh.sh
+
+# Default command: bash shell for manual testing
+CMD ["/bin/bash"]

@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  ubuntu-latest:
+    build:
+      context: .
+      dockerfile: Dockerfile.ubuntu
+      args:
+        BASE_IMAGE: ubuntu:latest
+    volumes:
+      - ./install-zsh.sh:/tmp/install-zsh.sh:ro
+    stdin_open: true
+    tty: true
+    environment:
+      TEST_ENV: ubuntu-latest
+
+  ubuntu-focal:
+    build:
+      context: .
+      dockerfile: Dockerfile.ubuntu
+      args:
+        BASE_IMAGE: ubuntu:focal
+    volumes:
+      - ./install-zsh.sh:/tmp/install-zsh.sh:ro
+    stdin_open: true
+    tty: true
+    environment:
+      TEST_ENV: ubuntu-focal
+
+  debian-bullseye:
+    build:
+      context: .
+      dockerfile: Dockerfile.debian
+      args:
+        BASE_IMAGE: debian:bullseye
+    volumes:
+      - ./install-zsh.sh:/tmp/install-zsh.sh:ro
+    stdin_open: true
+    tty: true
+    environment:
+      TEST_ENV: debian-bullseye
+
+  alpine:
+    build:
+      context: .
+      dockerfile: Dockerfile.alpine
+      args:
+        BASE_IMAGE: alpine:latest
+    volumes:
+      - ./install-zsh.sh:/tmp/install-zsh.sh:ro
+    stdin_open: true
+    tty: true
+    environment:
+      TEST_ENV: alpine
+
+  mac-book:
+    
