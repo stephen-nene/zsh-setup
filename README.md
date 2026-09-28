@@ -10,7 +10,8 @@ This project includes a comprehensive zsh installation and plugin configuration 
 Run the setup script directly:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/stephen-nene/zsh-setup/master/src/install-zsh.sh | zsh
+curl -fsSL https://raw.githubusercontent.com/stephen-nene/zsh-setup/master/src/install-zsh.sh | PLUGINS="zsh-autosuggestions,fast-syntax-highlighting,you-should-use" bash
+
 ````
 
 > ⚠️ Review scripts before piping them to a shell.
